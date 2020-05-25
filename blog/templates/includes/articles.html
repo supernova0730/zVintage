@@ -1,0 +1,32 @@
+<section id="container">
+    <div class="wrap-container">
+        <div id="main-content">
+            <div class="wrap-content">
+                <div class="row">
+                    {% for article in articles %}
+                        <article class="single-post zerogrid">
+                            <div class="row wrap-post">
+                                <div class="entry-header">
+                                    <span class="time">{{ article.date_created|date:'F j Y' }}</span>
+                                    <h2 class="entry-title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h2>
+                                    <span class="cat-links">
+                                        {% include 'includes/tags_list.html' %}
+                                    </span>
+                                </div>
+                                <div class="post-thumbnail-wrap">
+                                    {% if article.image %}
+                                        <img src="{{ article.image.url }}" alt="{{ article.image }}"/>
+                                    {% endif %}
+                                </div>
+                                <div class="entry-content">
+                                    <p>{{ article.min_text }}</p>
+                                    <center><a class="button " href="{{ article.get_absolute_url }}">Read More</a></center>
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

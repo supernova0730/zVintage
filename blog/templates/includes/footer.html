@@ -1,0 +1,51 @@
+{% load blog_extras %}
+<footer>
+    <div class="zerogrid wrap-footer">
+        <div class="row">
+            <div class="col-1-4 col-footer-1">
+                <div class="wrap-col">
+                    <h3 class="widget-title">About Us</h3>
+                    <p>Ut volutpat consectetur aliquam. Curabitur auctor in nis ulum ornare. Metus elit vehicula dui. Curabitur auctor in nis ulum ornare. Sed consequat, augue condimentum fermentum</p>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque la udantium</p>
+                </div>
+            </div>
+            <div class="col-1-4 col-footer-2">
+                <div class="wrap-col">
+                    <h3 class="widget-title">Last Posts</h3>
+                    <ul>
+                        {% get_last_posts as posts %}
+                        {% for post in posts %}
+                            <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-1-4 col-footer-3">
+                <div class="wrap-col">
+                    <h3 class="widget-title">Tag Cloud</h3>
+                    {% get_tags as tags %}
+                    {% for tag in tags %}
+                        <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="zerogrid bottom-footer">
+        <div class="row">
+            <div class="bottom-social">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+                <a href="#"><i class="fa fa-vimeo"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            Copyright @ - Designed by <a href="https://www.zerotheme.com" title="free website templates">ZEROTHEME</a>
+        </div>
+    </div>
+</footer>

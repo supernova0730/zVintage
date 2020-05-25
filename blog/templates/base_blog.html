@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock title %}</title>
+	
+    <!-- Mobile Specific Metas
+	================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- CSS
+	================================================== -->
+  	<link rel="stylesheet" href="{% static 'css/zerogrid.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+	
+	<!-- Custom Fonts -->
+    <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">  -->
+    <!-- <script src="https://kit.fontawesome.com/7559cba0eb.js" crossorigin="anonymous"></script>  -->
+</head>
+<body class="archive-page">
+	<div class="wrap-body">
+		{% include 'includes/header.html' %}
+        {% block content %}
+        {% endblock content %}
+		{% include 'includes/footer.html' %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends 'base_blog.html' %}
+
+{% block title %}{{ article.title }}{% endblock title %}
+
+{% block content %}
+
+<section id="container">
+    <div class="wrap-container">
+        <div id="main-content">
+            <div class="wrap-content">
+                <div class="row">
+                    <article class="single-post zerogrid">
+                        <div class="row wrap-post">
+                            <div class="entry-header">
+                                <span class="time">{{ article.date_created|date:'F j Y' }}</span>
+                                <h2 class="entry-title"><a href="#">{{ article.title }}</a></h2>
+                                <span class="cat-links">
+                                    {% include 'includes/tags_list.html' %}
+                                </span>
+                            </div>
+                            <div class="post-thumbnail-wrap">
+                                {% if article.image %}
+                                    <img src="{{ article.image.url }}" alt="{{ article.image }}"/>
+                                {% endif %}
+                            </div>
+                            <div class="entry-content">
+                                {{ article.text }}
+                            </div>
+                        </div>
+                    </article>
+                    <div class="zerogrid">
+                        <div class="comments-are">
+                            <div id="comment">
+                                <h3>Leave a Reply</h3>
+                                <span>Your email address will not be published. Required fields are marked </span>
+                                <form name="comment_form" id="comment_form" method="post" action="">
+                                    <label>
+                                    <span>Comment:</span>
+                                    <textarea name="message" id="message"></textarea>
+                                    </label>
+                                    <label>
+                                    <span>Name:</span>
+                                    <input type="text"  name="name" id="name" required>
+                                    </label>
+                                    <label>
+                                    <span>Email:</span>
+                                    <input type="email"  name="email" id="email" required>
+                                    </label>
+                                    <center><input class="sendButton" type="submit" name="submitcomment" value="Submit"></center>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

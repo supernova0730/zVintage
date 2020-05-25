@@ -1,0 +1,7 @@
+{% for tag in article.tags.all %}
+    {% if forloop.counter == article.tags.all.count %}
+        <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+    {% else %}
+        <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>,
+    {% endif %}
+{% endfor %}
