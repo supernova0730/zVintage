@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.utils import timezone
 
 class Tag(models.Model):
     name = models.CharField(max_length = 50)
@@ -23,4 +24,14 @@ class Article(models.Model):
     
     def get_absolute_url(self):
         return reverse('article_detail_url', kwargs = { 'id' : self.id })
+
+class Reply(models.Model):
+    email = models.EmailField()
+    name = models.CharField(max_length = 255)
+    content = models.TextField()
+    article = models.ForeignKey(Article, on_delete = models.CASCADE)
+    date_created = models.DateTimeField(default = timezone.now)
+
+    def __str__(self):
+        return self.content
     

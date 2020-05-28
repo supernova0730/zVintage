@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from .models import Tag, Article
+from .models import Tag, Article, Reply
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
@@ -15,4 +15,5 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Tag)
+admin.site.register(Reply)
 admin.site.register(Article, ArticleAdmin)

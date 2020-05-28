@@ -245,3 +245,22 @@ a.button:hover{background-color: #333;}
 .maps iframe{
     pointer-events: none;
 }
+
+.comment {
+	margin-bottom: 20px;
+	font-family: arial;
+	border-bottom: 1px solid gray;
+}
+
+.comment .name {
+
+}
+
+.comment .content {
+	padding: 0 15px;
+}
+
+.comment .time {
+	color: gray;
+	font-size: 12px;
+}

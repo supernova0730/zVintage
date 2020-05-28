@@ -28,24 +28,26 @@
                             </div>
                         </div>
                     </article>
+                    {% if article.reply_set.all %}
+                        <div class="zerogrid" style="margin-bottom: 25px;">
+                            <div class="comments-are">
+                                {% for comment in article.reply_set.all %}
+                                    <div class="comment">
+                                        <h6 class="name">{{ comment.name|title }}</h6>
+                                        <p class="content">{{ comment.content }}</p>
+                                        <span class="time">{{ comment.date_created }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
                     <div class="zerogrid">
                         <div class="comments-are">
                             <div id="comment">
                                 <h3>Leave a Reply</h3>
-                                <span>Your email address will not be published. Required fields are marked </span>
                                 <form name="comment_form" id="comment_form" method="post" action="">
-                                    <label>
-                                    <span>Comment:</span>
-                                    <textarea name="message" id="message"></textarea>
-                                    </label>
-                                    <label>
-                                    <span>Name:</span>
-                                    <input type="text"  name="name" id="name" required>
-                                    </label>
-                                    <label>
-                                    <span>Email:</span>
-                                    <input type="email"  name="email" id="email" required>
-                                    </label>
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
                                     <center><input class="sendButton" type="submit" name="submitcomment" value="Submit"></center>
                                 </form>
                             </div>
