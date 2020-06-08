@@ -3,19 +3,19 @@ from django.shortcuts import redirect
 from django.views.generic import View
 from django.http import HttpResponse
 
+from django.views.generic import (
+    ListView, DetailView
+)
+
 from .models import Article
 from .models import Tag
 from .models import Reply
 from .forms import ReplyForm
 
 
-class ArticlesList(View):
-    def get(self, request):
-        articles = Article.objects.all()
-        context = {
-            'articles': articles
-        }
-        return render(request, 'blog/articles_list.html', context)
+class ArticlesList(ListView):
+    queryset = Article.objects.all()
+    template_name = 'blog/articles_list.html'
 
 class ArticleDetail(View):
     def get(self, request, id):
@@ -49,6 +49,8 @@ class TagDetail(View):
         articles = tag.article_set.all()
         context = {
             'tag': tag,
-            'articles': articles
+            'object_list': articles
         }
         return render(request, 'blog/tag_detail.html', context)
+
+
