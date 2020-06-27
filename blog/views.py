@@ -17,6 +17,7 @@ class ArticlesList(ListView):
     queryset = Article.objects.all()
     template_name = 'blog/articles_list.html'
 
+
 class ArticleDetail(View):
     def get(self, request, id):
         article = Article.objects.get(id = id)
@@ -35,10 +36,12 @@ class ArticleDetail(View):
             email = form.cleaned_data['email']
             name = form.cleaned_data['name']
             content = form.cleaned_data['content']
-            reply = Reply(email = email, 
-                        name = name, 
-                        content = content, 
-                        article = article)
+            reply = Reply(
+                email = email, 
+                name = name, 
+                content = content, 
+                article = article
+            )
             reply.save()
             return redirect(article.get_absolute_url())
 
